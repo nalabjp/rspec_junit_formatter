@@ -165,7 +165,7 @@ private
     text.to_s.encode(Encoding::UTF_8).gsub(ILLEGAL_REGEXP, ILLEGAL_REPLACEMENT).gsub(DISCOURAGED_REGEXP, DISCOURAGED_REPLACEMENTS)
   end
 
-  STRIP_DIFF_COLORS_BLOCK_REGEXP = /^ ( [ ]* ) Diff: (?: \e\[ 0 m )? (?: \n \1 \e\[ \d+ (?: ; \d+ )* m .* )* /x
+  STRIP_DIFF_COLORS_BLOCK_REGEXP = /^ ( [ ]* ) (Diff|Failure\/Error): (?: \e\[ 0 m )? (?: \n \1 \e\[ \d+ (?: ; \d+ )* m .* )* /x
   STRIP_DIFF_COLORS_CODES_REGEXP = /\e\[ \d+ (?: ; \d+ )* m/x
 
   def strip_diff_colors(string)
@@ -178,7 +178,7 @@ private
     # We also only want to target the diff hunks because the failure message
     # itself might legitimately contain ansi escape codes.
     #
-    string.sub(STRIP_DIFF_COLORS_BLOCK_REGEXP) { |match| match.gsub(STRIP_DIFF_COLORS_CODES_REGEXP, "".freeze) }
+    string.gsub(STRIP_DIFF_COLORS_BLOCK_REGEXP) { |match| match.gsub(STRIP_DIFF_COLORS_CODES_REGEXP, "".freeze) }
   end
 end
 
