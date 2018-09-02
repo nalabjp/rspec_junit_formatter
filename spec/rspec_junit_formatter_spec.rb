@@ -7,7 +7,7 @@ describe RspecJunitFormatter do
 
   before(:all) { ENV.delete("TEST_ENV_NUMBER") } # Make sure this doesn't exist by default
 
-  let(:formatter_arguments) { ["--format", "RspecJunitFormatter"] }
+  let(:formatter_arguments) { ["--format", "RspecJunitFormatter", "--format", "progress"] }
   let(:extra_arguments) { [] }
 
   let(:color_opt) do
