@@ -55,7 +55,6 @@ describe RspecJunitFormatter do
     # it has a testsuite
 
     STDOUT.write output
-    STDOUT.write doc
     expect(testsuite).not_to be(nil)
 
     expect(testsuite["name"]).to eql("rspec")
