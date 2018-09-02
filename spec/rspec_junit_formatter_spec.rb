@@ -112,7 +112,6 @@ describe RspecJunitFormatter do
       expect(child["message"]).not_to be_empty
       expect(child.text.strip).not_to be_empty
       expect(child.text.strip).not_to match(/\\e\[(?:\d+;?)+m/)
-      STDOUT.write child.text.strip
     end
 
     # it has shared test cases which list both the inclusion and included files
